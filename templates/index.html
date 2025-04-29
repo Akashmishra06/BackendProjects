@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+
+{% block body%}
+<!-- <h1>
+    Authentication is the one thing
+</h1> -->
+
+<div class="container">
+    <h1>Welcome</h1>
+    <form id="auth-form" action="{{url_for('login')}}" method="post">
+        <input type="text" name="username" placeholder="username" class="input-fiels">
+        <input type="password" name="password" placeholder="password" class="input-fiels">
+        <input type="submit" value="Login" class="btn btn-login" onclick="setActionsForm('login')">
+        <input type="button" value="Register" class="btn btn-login" onclick="setActionsForm('register')">
+    </form>
+</div>
+
+<script>
+
+    function setActionsForm(action){
+        let form = document.getElementById("auth-form");
+        if (action === 'login'){
+            form.action = "{{url_for('login')}}";
+            form.method = 'post';
+            form.submit();
+
+        }else if ( action === "register"){
+            form.action = "{{url_for('register')}}"
+            form.method = "post",
+            form.submit();
+        }
+    }
+</script>
+{% endblock %}
